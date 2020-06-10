@@ -10,6 +10,7 @@ using namespace std;
 
     }
 }*/
+//take O(n+1) space
 
 int fun(int n){
     static int sum=0;
@@ -18,6 +19,8 @@ int fun(int n){
         n--;
     }
 }
+
+//takes O(n) time and O(1) space
 
 int main()
 {
