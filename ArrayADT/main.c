@@ -81,6 +81,27 @@ int LinearSearch(struct Array *arr,int key){
 
 }
 
+int BinarySearch(struct Array arr,int h,int l,int key){
+    int mid;
+
+    while(l<=h){
+        mid=(l+h)/2;
+    if(key==arr.A[mid])
+        return mid;
+    else if(key<arr.A[mid])
+        h=mid-1;
+    else
+        l=mid+1;
+
+
+
+    }
+    return -1;
+
+
+
+}
+
 
 
 
@@ -125,6 +146,11 @@ int main()
 
         display(arr);
 
+        int c=BinarySearch(arr,arr.length-1,0,5);
+        printf("\nfound at %d\n",c);
+
+        /*
+
         int c=LinearSearch(&arr,44);
 
 
@@ -133,6 +159,10 @@ int main()
 
         display(arr);
         printf("\nfound at %d\n",c);
+
+        */
+
+
 
 
     }
