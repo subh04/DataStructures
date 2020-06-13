@@ -36,6 +36,7 @@ void insert(struct Array *arr,int index,int x){
 
 
 }
+
 void delete(struct Array *arr,int index){
     int i;
     if(index>arr->length-1){
@@ -48,7 +49,32 @@ void delete(struct Array *arr,int index){
         arr->length--;
     }
 
+}
+int LinearSearch(struct Array *arr,int key){
+    int i,temp;
+    for(int i=0;i<arr->length;i++){
+        if(key==arr->A[i]){
+
+            temp=arr->A[i-1];
+            arr->A[i-1]=arr->A[i];
+            arr->A[i]=temp;
+
+
+
+
+            return i-1;
+        }
+
     }
+    return -1;
+
+
+
+
+}
+
+
+
 
 
 
@@ -76,18 +102,29 @@ int main()
         }
         arr.length=n;
 
-        printf("length before append %d \n",arr.length);
+        /*printf("length before append %d \n",arr.length);
 
-        //append(&arr,741); //call by address
-        //printf("length after append %d \n",arr.length);
+        append(&arr,741); //call by address
+        printf("length after append %d \n",arr.length);
 
-        //insert(&arr,3,999); //call by address
-        //printf("length after insert %d \n",arr.length);
+        insert(&arr,3,999); //call by address
+        printf("length after insert %d \n",arr.length);
 
         delete(&arr,3); //call by address
-        printf("length after delete %d \n",arr.length);
+        printf("length after delete %d \n",arr.length);*/
+
+
 
         display(arr);
+
+        int c=LinearSearch(&arr,44);
+
+
+        printf("\nThe elements of array after linear search with transposition improvement\n");
+
+
+        display(arr);
+        printf("\nfound at %d\n",c);
 
 
     }
