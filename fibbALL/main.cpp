@@ -65,6 +65,10 @@ int main()
     cout<<c<<"\n";
     cout<<d<<"\n";
     int e=fibMemoization(6);
-    cout<<e;
+    cout<<e<<"\n";
+
+        for(int i=0;i<10;i++){
+        cout<<f[i]<<" ";
+    }
 
 }
