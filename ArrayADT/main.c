@@ -55,14 +55,22 @@ int LinearSearch(struct Array *arr,int key){
     for(int i=0;i<arr->length;i++){
         if(key==arr->A[i]){
 
+            /* TRANSPOSITION
+
             temp=arr->A[i-1];
             arr->A[i-1]=arr->A[i];
+            arr->A[i]=temp;
+
+            */
+            /*MOVE TO HEAD*/
+            temp=arr->A[0];
+            arr->A[0]=arr->A[i];
             arr->A[i]=temp;
 
 
 
 
-            return i-1;
+            return 0;
         }
 
     }
