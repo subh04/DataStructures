@@ -193,11 +193,27 @@ void reverseSwap(struct Array arr){
 
 }
 
+void insertInSortedArray(struct Array arr,int x){
+    int i;
+    for(i=arr.length-1;i>=0;i--){
+        if(arr.A[i]>x){
+            arr.A[i+1]=arr.A[i];
+        }else{
+        arr.A[i+1]=x;
+        break;
+        }
+
+    }
+    arr.length++;
+    printf("\ninserting is sorted array\n");
+    for(i=0;i<arr.length;i++){
+        printf("%d ",arr.A[i]);
+    }
 
 
 
 
-
+}
 
 int main()
 {
@@ -252,16 +268,17 @@ int main()
         printf("\nfound at %d\n",c);
 
         */
-        printf("getting index value of index %d\n%d\n",6,get(arr,6));
+        printf("getting index value of index %d\n%d\n",6,get(arr,2));
 
         printf("\nsetting value of index %d\n",3,set(arr,3,47));
 
-        max(arr);
-        min(arr);
-        sum(arr);
-        avg(arr);
-        reverse(arr);
-        reverseSwap(arr);
+        //max(arr);
+        //min(arr);
+       // sum(arr);
+        //avg(arr);
+        //reverse(arr);
+        //reverseSwap(arr);
+        insertInSortedArray(arr,25);
 
 
 
