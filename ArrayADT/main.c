@@ -210,9 +210,38 @@ void insertInSortedArray(struct Array arr,int x){
         printf("%d ",arr.A[i]);
     }
 
+}
+int checkForSorted(struct Array arr){
+    int i;
+    for(i=0;i<arr.length-1;i++){
+        if(arr.A[i]<arr.A[i+1])
+            return 1;
+        else{
+            return 0;
+            break;
+        }
+    }
 
 
+}
+void arrangeNegOnLeft(struct Array arr){
+    int i=0;
+    int j=arr.length-1;
+    int temp;
+    while(i<j)
+    {
+        while(arr.A[i]<0){i++;}
+        while(arr.A[j]>0){j--;}
 
+        if(i<j){
+            temp=arr.A[i];
+            arr.A[i]=arr.A[j];
+            arr.A[j]=temp;
+        }
+    }
+    for(i=0;i<arr.length;i++){
+        printf("%d ",arr.A[i]);
+    }
 }
 
 int main()
@@ -253,8 +282,8 @@ int main()
 
         display(arr);
 
-        int c=BinarySearch(arr,arr.length-1,0,5);
-        printf("\nfound at %d\n",c);
+        //int c=BinarySearch(arr,arr.length-1,0,5);
+        //printf("\nfound at %d\n",c);
 
         /*
 
@@ -270,7 +299,7 @@ int main()
         */
         printf("getting index value of index %d\n%d\n",6,get(arr,2));
 
-        printf("\nsetting value of index %d\n",3,set(arr,3,47));
+        //printf("\nsetting value of index %d\n",3,set(arr,3,47));
 
         //max(arr);
         //min(arr);
@@ -278,7 +307,20 @@ int main()
         //avg(arr);
         //reverse(arr);
         //reverseSwap(arr);
-        insertInSortedArray(arr,25);
+
+
+        //insertInSortedArray(arr,25);
+
+        /*check for sorted
+        int d=checkForSorted(arr);
+        if(d==0){
+            printf("\nnot sorted");
+        }else{
+            printf("\nsorted");
+        }
+        */
+        printf("\narranging negative numbers to the left\n");
+        arrangeNegOnLeft(arr);
 
 
 
