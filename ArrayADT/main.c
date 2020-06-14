@@ -37,6 +37,7 @@ void insert(struct Array *arr,int index,int x){
 
 }
 
+
 void delete(struct Array *arr,int index){
     int i;
     if(index>arr->length-1){
@@ -101,6 +102,66 @@ int BinarySearch(struct Array arr,int h,int l,int key){
 
 
 }
+int get(struct Array arr,int index){
+    if(index>=0&&index<arr.length){
+        return arr.A[index];
+    }
+}
+
+int set(struct Array arr,int index,int x){
+    int i;
+    if(index>=0&&index<arr.length){
+            arr.A[index]=x;
+    for(i=0;i<arr.length;i++){
+        printf("%d ",arr.A[i]);
+    }
+
+    }
+}
+void max(struct Array arr){
+    int max=arr.A[0];
+    int i;
+    for(i=1;i<arr.length;i++){
+        if(arr.A[i]>max){
+            max=arr.A[i];
+        }
+
+    }
+    printf("max is %d ",max);
+
+}
+void min(struct Array arr){
+    int min=arr.A[0];
+    int i;
+    for(i=1;i<arr.length;i++){
+        if(arr.A[i]<min){
+            min=arr.A[i];
+        }
+
+    }
+    printf("\nmin is %d ",min);
+
+}
+void sum(struct Array arr){
+    int sum=0;
+    int i;
+    for(i=0;i<arr.length;i++){
+        sum=sum+arr.A[i];
+    }
+    printf("\nsum is %d ",sum);
+
+
+}
+void avg(struct Array arr){
+    int sum=0;
+    int i;
+    for(i=0;i<arr.length;i++){
+        sum=sum+arr.A[i];
+    }
+    printf("\naverage is %d ",sum/arr.length);
+
+
+}
 
 
 
@@ -161,6 +222,14 @@ int main()
         printf("\nfound at %d\n",c);
 
         */
+        printf("getting index value of index %d\n%d\n",6,get(arr,6));
+
+        printf("\nsetting value of index %d\n",3,set(arr,3,47));
+
+        max(arr);
+        min(arr);
+        sum(arr);
+        avg(arr);
 
 
 
