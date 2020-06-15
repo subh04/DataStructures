@@ -276,8 +276,8 @@ void SortedMerge(struct Array arr){
     }
 }
 void unionSetUnsorted(struct Array arr){
-    //int B[]={12,4,7,2,5};
-    int B[]={2,5,2,8};
+    int B[]={12,4,7,2,5};
+    //int B[]={2,5,2,8};
     int C[15];
     int i=0,j=0,k=0;
     for(int i=0;i<arr.length;i++){
@@ -299,7 +299,7 @@ void unionSetUnsorted(struct Array arr){
                 }
 
             }
-            if(!earlyExit){
+            if(earlyExit==0){
                 C[sizeofc]=B[j];
                 sizeofc++;
 
@@ -481,6 +481,37 @@ setDiffSorted(struct Array arr){
 
 }
 
+void setDiff(struct Array arr){
+    int B[]={12,4,7,2,5};
+    int C[15];
+    int i;
+    int j;
+    int k=0;
+    int flag=0;
+    for(i=0;i<arr.length;i++){
+        flag=0;
+        for(j=0;j<5;j++){
+            if(arr.A[i]==B[j]){
+                flag=1;
+                //break;
+            }else{
+                continue;
+
+            }
+
+        }
+        if(flag==0){
+            C[k]=arr.A[i];
+            k++;
+        }
+    }
+    printf("\nDifference unsorted is ");
+    for(i=0;i<15;i++){
+        printf("%d ",C[i]);
+    }
+
+}
+
 
 
 
@@ -572,7 +603,7 @@ int main()
         //setIntersection(arr);
         //setIntersectionSorted(arr);
 
-        setDiffSorted(arr);
+        setDiff(arr);
 
     }
 }
