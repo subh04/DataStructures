@@ -537,73 +537,13 @@ int main()
             scanf("%d",&arr.A[i]); //%d means it waits for an integer value
         }
         arr.length=n;
-
-        /*printf("length before append %d \n",arr.length);
-
-        append(&arr,741); //call by address
-        printf("length after append %d \n",arr.length);
-
-        insert(&arr,3,999); //call by address
-        printf("length after insert %d \n",arr.length);
-
-        delete(&arr,3); //call by address
-        printf("length after delete %d \n",arr.length);*/
-
-
-
-        display(arr);
-
-        //int c=BinarySearch(arr,arr.length-1,0,5);
-        //printf("\nfound at %d\n",c);
-
-        /*
-
-        int c=LinearSearch(&arr,44);
-
-
-        printf("\nThe elements of array after linear search with transposition improvement\n");
-
-
-        display(arr);
-        printf("\nfound at %d\n",c);
-
-        */
-        //printf("getting index value of index %d\n%d\n",6,get(arr,2));
-
-        //printf("\nsetting value of index %d\n",3,set(arr,3,47));
-
-        //max(arr);
-        //min(arr);
-       // sum(arr);
-        //avg(arr);
-        //reverse(arr);
-        //reverseSwap(arr);
-
-
-        //insertInSortedArray(arr,25);
-
-        /*check for sorted
-        int d=checkForSorted(arr);
-        if(d==0){
-            printf("\nnot sorted");
-        }else{
-            printf("\nsorted");
-        }
-        */
-        //printf("\narranging negative numbers to the left\n");
-        //arrangeNegOnLeft(arr);
-
-        //SortedMerge(arr);
-
-
-        //unionSetUnsorted(arr);
-
-        //unionSetSorted(arr);
-
-        //setIntersection(arr);
-        //setIntersectionSorted(arr);
-
-        setDiff(arr);
+        printf("Menu \n");
+        printf("Menu \n");
+        printf("Menu \n");
+        printf("Menu \n");
+        printf("Menu \n");
+        printf("Menu \n");
+        printf("Menu \n");
 
     }
 }
