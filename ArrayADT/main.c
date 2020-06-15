@@ -244,6 +244,37 @@ void arrangeNegOnLeft(struct Array arr){
     }
 }
 
+void SortedMerge(struct Array arr){
+    int B[]={48,54,63,82,91};
+    int C[15];
+    int i=0;
+    int j=0;
+    int k=0;
+    while(i<arr.length&&j<5){
+        if(arr.A[i]<B[j]){
+            C[k]=arr.A[i];
+            i++;
+            k++;
+        }else{
+            C[k]=B[j];
+            j++;
+            k++;
+
+        }
+    }
+    for(;i<arr.length;i++){
+        C[k]=arr.A[i];
+        k++;
+    }
+    for(;i<arr.length;i++){
+        C[k]=B[j];
+        k++;
+    }
+    printf("\nMerged array is ");
+    for(i=0;i<15;i++){
+        printf("%d ",C[i]);
+    }
+}
 int main()
 {
     struct Array arr;
@@ -297,7 +328,7 @@ int main()
         printf("\nfound at %d\n",c);
 
         */
-        printf("getting index value of index %d\n%d\n",6,get(arr,2));
+        //printf("getting index value of index %d\n%d\n",6,get(arr,2));
 
         //printf("\nsetting value of index %d\n",3,set(arr,3,47));
 
@@ -319,8 +350,10 @@ int main()
             printf("\nsorted");
         }
         */
-        printf("\narranging negative numbers to the left\n");
-        arrangeNegOnLeft(arr);
+        //printf("\narranging negative numbers to the left\n");
+        //arrangeNegOnLeft(arr);
+
+        SortedMerge(arr);
 
 
 
