@@ -275,6 +275,215 @@ void SortedMerge(struct Array arr){
         printf("%d ",C[i]);
     }
 }
+void unionSetUnsorted(struct Array arr){
+    //int B[]={12,4,7,2,5};
+    int B[]={2,5,2,8};
+    int C[15];
+    int i=0,j=0,k=0;
+    for(int i=0;i<arr.length;i++){
+        C[k]=arr.A[i];
+
+        k++;
+    }
+    int sizeofc=k;
+    k=0;
+    int earlyExit=0;
+    for(j=0;j<5;j++){
+        earlyExit=0;
+        for(k=0;k<sizeofc;k++){
+                if(B[j]==C[k]){
+                    earlyExit=1;
+                    break;
+                }else{
+                    continue;
+                }
+
+            }
+            if(!earlyExit){
+                C[sizeofc]=B[j];
+                sizeofc++;
+
+            }
+    }
+
+
+
+
+
+
+    /*
+    for(j=0;j<5;j++){
+
+        if(B[j]==C[k]){
+            //j++;
+            k++;
+        }else{
+            for(i=arr.length;i<15;i++){
+                C[i]=B[j];
+                //j++;
+                k++;
+                break;
+            }
+
+        }
+    }*/
+    printf("\n unsorted Union");
+    for(i=0;i<sizeofc;i++){
+        printf("%d ",C[i]);
+    }
+
+
+
+}
+void unionSetSorted(struct Array arr){
+    int B[]={2,4,5,7,12};
+    int C[15];
+    int i=0;
+    int j=0;
+    int k=0;
+    while(i<arr.length&&j<5){
+        if(arr.A[i]<B[j]){
+            C[k]=arr.A[i];
+            i++;
+            k++;
+        }else if(arr.A[i]>B[j]){
+            C[k]=B[j];
+            j++;
+            k++;
+
+        }else{
+            C[k]=arr.A[i];
+            i++;
+            j++;
+            k++;
+        }
+    }
+    for(;i<arr.length;i++){
+        C[k]=arr.A[i];
+        k++;
+    }
+    for(;j<5;j++){
+        C[k]=B[j];
+        k++;
+    }
+    printf("\nunion sorted is ");
+    for(i=0;i<15;i++){
+        printf("%d ",C[i]);
+    }
+
+
+}
+void setIntersection(struct Array arr){
+    int B[]={12,4,7,2,5};
+    int C[10];
+    int i=0;
+    int j=0;
+    int k=0;
+    for(i=0;i<arr.length;i++){
+        for(j=0;j<5;j++){
+            if(arr.A[i]==B[j]){
+                C[k]=arr.A[i];
+                k++;
+            }
+
+
+        }
+    }
+    printf("\nintersection\n");
+    for(i=0;i<k;i++){
+        printf("%d ",C[i]);
+    }
+
+
+
+
+
+}
+setIntersectionSorted(struct Array arr){
+    int B[]={2,4,5,7,12};
+    int C[15];
+    int i=0;
+    int j=0;
+    int k=0;
+    while(i<arr.length&&j<5){
+        if(arr.A[i]<B[j]){
+            //C[k]=arr.A[i];
+            i++;
+            //k++;
+        }else if(arr.A[i]>B[j]){
+            //C[k]=B[j];
+            j++;
+            //k++;
+
+        }else{
+            C[k]=arr.A[i];
+            i++;
+            j++;
+            k++;
+        }
+    }
+    for(;i<arr.length;i++){
+        //C[k]=arr.A[i];
+        k++;
+    }
+    for(;j<5;j++){
+        //C[k]=B[j];
+        k++;
+    }
+    int sizeofc=k;
+    printf("\nunion sorted is ");
+    for(i=0;i<sizeofc;i++){
+        printf("%d ",C[i]);
+    }
+
+
+
+
+}
+
+setDiffSorted(struct Array arr){
+    int B[]={2,4,5,7,12};
+    int C[15];
+    int i=0;
+    int j=0;
+    int k=0;
+    while(i<arr.length&&j<5){
+        if(arr.A[i]<B[j]){
+            C[k]=arr.A[i];
+            i++;
+            k++;
+        }else if(arr.A[i]>B[j]){
+            //C[k]=B[j];
+            j++;
+            //k++;
+
+        }else{
+            C[k]=arr.A[i];
+            i++;
+            j++;
+            //k++;
+        }
+    }
+    for(;i<arr.length;i++){
+        //C[k]=arr.A[i];
+        k++;
+    }
+    for(;j<5;j++){
+        //C[k]=B[j];
+        k++;
+    }
+    int sizeofc=k;
+    printf("\nunion sorted is ");
+    for(i=0;i<sizeofc-1;i++){
+        printf("%d ",C[i]);
+    }
+
+
+}
+
+
+
+
 int main()
 {
     struct Array arr;
@@ -353,13 +562,17 @@ int main()
         //printf("\narranging negative numbers to the left\n");
         //arrangeNegOnLeft(arr);
 
-        SortedMerge(arr);
+        //SortedMerge(arr);
 
 
+        //unionSetUnsorted(arr);
 
+        //unionSetSorted(arr);
+
+        //setIntersection(arr);
+        //setIntersectionSorted(arr);
+
+        setDiffSorted(arr);
 
     }
-
-
-
 }
