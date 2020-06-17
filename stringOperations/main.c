@@ -4,7 +4,7 @@
 int main()
 {
     //Findint Length of the string
-    char S[]="MALOM";
+    char S[]="finding rada rada";
     int i;
     //Findint Length of the string
     /*
@@ -116,7 +116,8 @@ int main()
     }
     */
     //CHECKING IF PALINDROME OR NOT USING TWO ARRAYS
-    //WRONG OUTPUT
+
+    /*
     int j;
     for(j=0;S[j]!='\0';j++){
 
@@ -141,7 +142,28 @@ int main()
         printf("palindrome\n");
     }
 
-
+    */
+    //FINDING DUPLICATES USING HASH TABLE
+    int B[122-97+1];
+    for(i=0;i<26;i++){
+        B[i]=0;
+    }
+    printf("array initialized to zeros\n");
+    for(i=0;i<26;i++){
+        printf("%d ",B[i]);
+    }
+    for(i=0;S[i]!='\0';i++){
+        B[S[i]-97]++;
+    }
+    printf("\narray reinitialized according to array S\n");
+    for(i=0;i<26;i++){
+        printf("%d ",B[i]);
+    }
+    for(i=0;i<26;i++){
+        if(B[i]>1){
+            printf("\n%c appeared %d times",i+97,B[i]);
+        }
+    }
     return 0;
 
 }
