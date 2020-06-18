@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1592472602 source:c:\users\subha\desktop\datastructure\lowertrianglematrix\main.c
+	<stdio.h>
+	<stdlib.h>
+

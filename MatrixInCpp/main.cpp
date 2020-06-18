@@ -1,5 +1,5 @@
 #include <iostream>
-
+using namespace std;
 using namespace std;
 class DiagonalMatrix{
 private:
@@ -34,12 +34,12 @@ void DiagonalMatrix::Display(){
     for(i=1;i<=n;i++){
         for(j=1;j<=n;j++){
             if(i==j){
-                printf("%d ",A[i-1]);
+                cout<<" "<<A[i-1];
             }else{
-                printf("%d ",0);
+                cout<<" "<<0;
             }
         }
-        printf("\n");
+        cout<<"\n";
     }
 }
 int main()
@@ -50,6 +50,6 @@ int main()
     m.Set(3,3,3);
     m.Set(4,4,4);
     m.Display();
-    printf("\n%d",m.Get(2,3));
+    cout<<"\n"<<m.Get(2,2);
     return 0;
 }
