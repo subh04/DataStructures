@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+//Sparse matrix
 struct elements{
     int i;
     int j;
