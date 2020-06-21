@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1592726210 source:c:\users\subha\desktop\datastructure\polynomial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
