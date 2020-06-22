@@ -27,7 +27,7 @@ void display(struct Node *p){
         printf("%d ",p->data);
         p=p->next;
     }
-    printf("\n");
+
 }
 
 void recursiveDisplay(struct Node *p){
@@ -35,8 +35,10 @@ void recursiveDisplay(struct Node *p){
         printf("%d ",p->data);
         recursiveDisplay(p->next);
     }
-    printf("\n");
+
 }
+
+
 
 void reverseRecursiveDisplay(struct Node *p){
     if(p!=NULL){
@@ -54,7 +56,9 @@ int main()
     int A[]={3,5,7,10,15};
     create(A,5);
     display(first);
+    printf("\n");
     recursiveDisplay(first);
+    printf("\n");
     reverseRecursiveDisplay(first);
     return 0;
 }
