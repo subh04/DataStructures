@@ -49,8 +49,38 @@ void reverseRecursiveDisplay(struct Node *p){
     }
 
 }
-
-
+int countNodes(struct Node *p){
+    int c=0;
+    while(p!=NULL){
+        c++;
+        p=p->next;
+    }
+    return c;
+}
+int recursiveCountNodes(struct Node *p){
+    static int c=0;
+    if(p!=NULL){
+        c++;
+        recursiveCountNodes(p->next);
+    }
+    return c;
+}
+int sumOfElementsR(struct Node *p){
+    static int sum=0;
+    if(p!=NULL){
+        sum=sum+p->data;
+        sumOfElementsR(p->next);
+    }
+    return sum;
+}
+int sumOfElements(struct Node *p){
+    static int sum=0;
+    while(p!=NULL){
+        sum=sum+p->data;
+        p=p->next;
+    }
+    return sum;
+}
 int main()
 {
     int A[]={3,5,7,10,15};
@@ -60,5 +90,9 @@ int main()
     recursiveDisplay(first);
     printf("\n");
     reverseRecursiveDisplay(first);
+    printf("\nnumber of elements are %d",countNodes(first));
+    printf("\nnumber of elements using recursion are %d",recursiveCountNodes(first));
+    printf("\nsum of elements using recursion are %d",sumOfElementsR(first));
+    printf("\nsum of elements is %d",sumOfElements(first));
     return 0;
 }
