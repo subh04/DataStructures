@@ -130,6 +130,13 @@ void RLinearSearch(struct Node *p,int key){
 }
 void improvedLinearSearchUsingMoveToHeader(struct Node *p,int key){
         struct Node *q=NULL;
+        if(p==NULL){
+            return;
+        }
+        if(p->data==key){
+            printf("found");
+            return;
+        }
         while(p!=NULL){
             if(p->data==key){
                 q->next=p->next;
@@ -146,11 +153,30 @@ void improvedLinearSearchUsingMoveToHeader(struct Node *p,int key){
             printf("not found");
         }
 }
+void insert(struct Node *p,int afterPos,int data){
+    int i;
+    if(afterPos<0||afterPos>countNodes(p))
+        return;
+    struct Node *t;
+    t=(struct Node *)malloc(sizeof(struct Node));
+    t->data=data;
+    if(afterPos==0){
+        t->next=first;  /*------------*/
+        first=t;
+    }else{
+        for(i=0;i<afterPos-1;i++){
+            p=p->next;
+        }
+        t->next=p->next;
+        p->next=t;
+    }
+
+}
 
 int main()
 {
     int A[]={3,5,7,10,15};
-    int key,key2,key3;
+    int key,key2,key3,afterPos;
     create(A,5);
     display(first);
     printf("\n");
@@ -172,5 +198,23 @@ int main()
     printf("\nplease enter a key to find using improved search ");
     scanf("%d",&key3);
     improvedLinearSearchUsingMoveToHeader(first,key3);
+    printf("\n");
+    display(first);
+    printf("\nplease enter a key to find using improved search ");
+    scanf("%d",&key3);
+    improvedLinearSearchUsingMoveToHeader(first,key3);
+    printf("\n");
+    display(first);
+    printf("enter position after which to enter ");
+    scanf("%d",&afterPos);
+    insert(first,afterPos,100);
+    printf("\n");
+    display(first);
+    printf("enter position after which to enter ");
+    scanf("%d",&afterPos);
+    insert(first,afterPos,999);
+    printf("\n");
+    display(first);
+    printf("\ninserted after node %d",afterPos);
     return 0;
 }
