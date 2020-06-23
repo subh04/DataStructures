@@ -81,9 +81,58 @@ int sumOfElements(struct Node *p){
     }
     return sum;
 }
+int Maximum(struct Node *p){
+    int max=-32768;
+    while(p!=NULL){
+        if(p->data>max){
+            max=p->data;
+            p=p->next;
+        }
+    }
+    return max;
+}
+int RMaximum(struct Node *p){
+    int static max=-32768;
+    if(p!=NULL){
+        if(p->data>max){
+            max=p->data;
+            RMaximum(p->next);
+            }else{
+                RMaximum(p->next);
+            }
+    }
+    return max;
+}
+void linearSearchLL(struct Node *p,int key){
+    while(p!=NULL){
+        if(p->data==key){
+            printf("found AT %d",p);
+            break;
+        }else{
+            p=p->next;
+        }
+    }
+    if(p==NULL){
+    printf("not found");
+    }
+}
+void RLinearSearch(struct Node *p,int key){
+    if(p!=NULL){
+        if(p->data==key){
+            printf("found AT %d",p);
+        }else{
+            RLinearSearch(p->next,key);
+        }
+    }
+    else{
+        printf("not found");
+    }
+}
+
 int main()
 {
     int A[]={3,5,7,10,15};
+    int key,key2;
     create(A,5);
     display(first);
     printf("\n");
@@ -94,5 +143,13 @@ int main()
     printf("\nnumber of elements using recursion are %d",recursiveCountNodes(first));
     printf("\nsum of elements using recursion are %d",sumOfElementsR(first));
     printf("\nsum of elements is %d",sumOfElements(first));
+    printf("\nthe max element is %d",Maximum(first));
+    printf("\nthe max element using recursion is %d",RMaximum(first));
+    printf("\nplease enter a key to find ");
+    scanf("%d",&key);
+    linearSearchLL(first,key);
+    printf("\nplease enter a key to find using recursion ");
+    scanf("%d",&key2);
+    RLinearSearch(first,key2);
     return 0;
 }
