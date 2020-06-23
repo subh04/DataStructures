@@ -172,7 +172,51 @@ void insert(struct Node *p,int afterPos,int data){
     }
 
 }
+/*
+void insertInEnd(struct Node *p,int data){
+    struct Node *t,*last;
+    int i;
+    t=(struct Node *)malloc(sizeof(struct Node));
+    t->data=data;
+    if(p==NULL)
+        first=last=t;
+    else{
+        while(p!=NULL){
+            p=p->next;
+        }
+        if(p==NULL){
+            last=p;
 
+        }
+        last->next=t;
+        last=t;
+    }
+
+
+}
+*/
+void insertInSorted(struct Node *p,int data){
+    struct Node *q=NULL,*t;
+    if(p->data>data){
+        t=(struct Node*)malloc(sizeof(struct Node));
+        t->data=data;
+        t->next=first;
+        first=t;
+
+        return;
+
+    }
+    while(p!=NULL && p->data<data){
+        q=p;
+        p=p->next;
+    }
+    t=(struct Node*)malloc(sizeof(struct Node));
+    t->data=data;
+    t->next=q->next;
+    q->next=t;
+
+
+}
 int main()
 {
     int A[]={3,5,7,10,15};
@@ -216,5 +260,11 @@ int main()
     printf("\n");
     display(first);
     printf("\ninserted after node %d",afterPos);
+    //insertInEnd(first,400);
+    //printf("\n");
+    //display(first);
+    insertInSorted(first,2);
+    printf("\n");
+    display(first);
     return 0;
 }
