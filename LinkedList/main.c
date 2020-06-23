@@ -197,6 +197,15 @@ void insertInEnd(struct Node *p,int data){
 */
 void insertInSorted(struct Node *p,int data){
     struct Node *q=NULL,*t;
+    t=(struct Node*)malloc(sizeof(struct Node));
+    t->data=data;
+    t->next=NULL;
+    if(p==NULL){
+
+        first=t;
+        return;
+
+    }
     if(p->data>data){
         t=(struct Node*)malloc(sizeof(struct Node));
         t->data=data;
@@ -219,6 +228,7 @@ void insertInSorted(struct Node *p,int data){
 }
 int main()
 {
+
     int A[]={3,5,7,10,15};
     int key,key2,key3,afterPos;
     create(A,5);
