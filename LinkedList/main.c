@@ -128,11 +128,29 @@ void RLinearSearch(struct Node *p,int key){
         printf("not found");
     }
 }
+void improvedLinearSearchUsingMoveToHeader(struct Node *p,int key){
+        struct Node *q=NULL;
+        while(p!=NULL){
+            if(p->data==key){
+                q->next=p->next;
+                p->next=first;
+                first=p;
+                printf("found AT %d",p);
+                break;
+            }else{
+                q=p;
+                p=p->next;
+            }
+        }
+        if(p==NULL){
+            printf("not found");
+        }
+}
 
 int main()
 {
     int A[]={3,5,7,10,15};
-    int key,key2;
+    int key,key2,key3;
     create(A,5);
     display(first);
     printf("\n");
@@ -151,5 +169,8 @@ int main()
     printf("\nplease enter a key to find using recursion ");
     scanf("%d",&key2);
     RLinearSearch(first,key2);
+    printf("\nplease enter a key to find using improved search ");
+    scanf("%d",&key3);
+    improvedLinearSearchUsingMoveToHeader(first,key3);
     return 0;
 }
