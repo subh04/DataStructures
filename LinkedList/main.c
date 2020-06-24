@@ -251,6 +251,24 @@ void deleteFromLL(struct Node *p,int pos){
 
     }
 }
+void isSorted(struct Node *p){
+        int x=-32768;
+        if(p==NULL){
+            printf("nothing to check\n");
+            return;
+        }
+        while(p!=NULL){
+            if(p->data>x){
+                x=p->data;
+                p=p->next;
+            }else{
+                printf("\nthe list is not sorted\n");
+                return;
+            }
+
+        }
+        printf("\nlist is sorted");
+}
 int main()
 {
 
@@ -306,6 +324,9 @@ int main()
     display(first);
     deleteFromLL(first,4);
     printf("\nafter deletion\n");
+    display(first);
+    isSorted(first);
+    printf("\n");
     display(first);
     return 0;
 }
