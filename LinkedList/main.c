@@ -271,6 +271,10 @@ void isSorted(struct Node *p){
 }
 void removeRedundant(struct Node *p){
     struct Node *q=p->next;
+    if(p==NULL){
+        printf("nothing to check");
+        return;
+    }
     while(q!=NULL){
         if(p->data==q->data){
             p->next=q->next;
@@ -283,8 +287,57 @@ void removeRedundant(struct Node *p){
         }
     }
 }
+
+void reverseElements(struct Node *p){
+    int A[countNodes(p)];
+    int i;
+    for(i=0;i<countNodes(first);i++){
+        A[i]=p->data;
+        p=p->next;
+    }
+    printf("\nprinting array\n");
+    p=first;
+    for(i=0;i<countNodes(p);i++){
+        printf("%d ",A[i]);
+    }
+    printf("\n");
+    for(i=countNodes(first)-1;i>=0;i--){
+        p->data=A[i];
+        p=p->next;
+    }
+    p=first;
+    printf("\nreversed using elements\n");
+    display(p);
+}
+void reverseLinksUsingSlidingPointers(struct Node *p){
+    struct Node *q=NULL,*r=NULL;
+    while(p!=NULL){
+        r=q;
+        q=p;
+        p=p->next;
+        q->next=r;
+    }
+    first=q;
+    printf("\nreversed using links\n");
+    display(first);
+}
+void RReverse(struct Node *q,struct Node *p){
+    if(p!=NULL){
+        RReverse(p,p->next);
+        p->next=q;
+
+    }else{
+        first=q;
+
+    }
+    //printf("\nrecursive reversing\n");
+    //display(first);
+
+
+}
 int main()
 {
+    struct Node *q=NULL;
 
     int A[]={3,5,7,10,15};
     int key,key2,key3,afterPos;
@@ -342,8 +395,18 @@ int main()
     isSorted(first);
     printf("\n");
     display(first);
-    removeRedundant(first);
+    //removeRedundant(first);
+    //printf("\n");
+    //display(first);
     printf("\n");
+
+    printf("\n%d",countNodes(first));
+    reverseElements(first);
+    printf("\n");
+    reverseLinksUsingSlidingPointers(first);
+    printf("\n");
+    RReverse(q,first);
+    printf("\nreversed using recursion\n");
     display(first);
     return 0;
 }
