@@ -258,7 +258,7 @@ void isSorted(struct Node *p){
             return;
         }
         while(p!=NULL){
-            if(p->data>x){
+            if(p->data>=x){
                 x=p->data;
                 p=p->next;
             }else{
@@ -268,6 +268,20 @@ void isSorted(struct Node *p){
 
         }
         printf("\nlist is sorted");
+}
+void removeRedundant(struct Node *p){
+    struct Node *q=p->next;
+    while(q!=NULL){
+        if(p->data==q->data){
+            p->next=q->next;
+            free(q);
+            q=p->next;
+        }else{
+            p=q;
+            q=q->next;
+
+        }
+    }
 }
 int main()
 {
@@ -304,12 +318,12 @@ int main()
     display(first);
     printf("enter position after which to enter ");
     scanf("%d",&afterPos);
-    insert(first,afterPos,100);
+    insert(first,afterPos,3);
     printf("\n");
     display(first);
     printf("enter position after which to enter ");
     scanf("%d",&afterPos);
-    insert(first,afterPos,999);
+    insert(first,afterPos,5);
     printf("\n");
     display(first);
     printf("\ninserted after node %d",afterPos);
@@ -326,6 +340,9 @@ int main()
     printf("\nafter deletion\n");
     display(first);
     isSorted(first);
+    printf("\n");
+    display(first);
+    removeRedundant(first);
     printf("\n");
     display(first);
     return 0;
