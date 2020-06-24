@@ -226,6 +226,31 @@ void insertInSorted(struct Node *p,int data){
 
 
 }
+void deleteFromLL(struct Node *p,int pos){
+    struct Node *q=NULL;
+    int i;
+    if(p==NULL){
+        printf("nothing to delete\n");
+        return;
+    }
+    if(pos<0 || pos>countNodes(p)){
+        printf("\ninvalid position");
+        return;
+    }
+    if(pos==1){
+
+        first=p->next;
+        free(p);
+    }else{
+        for(i=0;i<pos-1;i++){
+            q=p;
+            p=p->next;
+        }
+        q->next=p->next;
+        free(p);
+
+    }
+}
 int main()
 {
 
@@ -275,6 +300,12 @@ int main()
     //display(first);
     insertInSorted(first,2);
     printf("\n");
+    display(first);
+    deleteFromLL(first,-1);
+    printf("\nafter deletion\n");
+    display(first);
+    deleteFromLL(first,4);
+    printf("\nafter deletion\n");
     display(first);
     return 0;
 }
