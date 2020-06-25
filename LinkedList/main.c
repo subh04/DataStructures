@@ -3,7 +3,7 @@
 struct Node{
     int data;
     struct Node *next;
-}*first=NULL,*second=NULL; //first is globally available as a pointer to access this now we have to use -> arrow
+}*first=NULL,*second=NULL,*third=NULL; //first is globally available as a pointer to access this now we have to use -> arrow
 
 void create(int A[],int n){
     int i;
@@ -365,6 +365,59 @@ void concatenate(struct Node *p){
     display(first);
 
 }
+void mergingTwoLL(struct Node *p){
+    printf("\n");
+    display(first);
+    int C[]={8,13,901,1014,2004};
+    struct Node *t,*last,*q=NULL;
+    int i,n=5;
+    third=(struct Node*)malloc(sizeof(struct Node));
+    third->data=C[0];
+    third->next=NULL;
+    last=third;
+    for(i=1;i<n;i++){
+        t=(struct Node*)malloc(sizeof(struct Node));
+        t->data=C[i];
+        t->next=NULL;
+        last->next=t;//here when it links with the new node
+        last=t;
+
+    }
+    printf("\n");
+    display(third);
+    struct Node *th=NULL,*l=NULL;
+    if(p->data<third->data){
+        th=l=p;
+        p=p->next;
+        l->next=NULL;
+    }else{
+        th=l=third;
+        third=third->next;
+        l->next=NULL;
+    }
+    while(p!=NULL&&third!=NULL){
+        if(p->data<third->data){
+            l->next=p;
+            l=p;
+            p=p->next;
+            l->next=NULL;
+        }else{
+            l->next=third;
+            l=third;
+            third=third->next;
+            l->next=NULL;
+        }
+    }
+    if(p!=NULL){
+        l->next=p;
+
+    }else{
+        l->next=third;
+    }
+    printf("\nMerging two sorted lists int sorted order\n");
+    display(first);
+
+}
 int main()
 {
     struct Node *q=NULL;
@@ -438,7 +491,11 @@ int main()
     RReverse(q,first);
     printf("\nreversed using recursion\n");
     display(first);
+    RReverse(q,first);
+    printf("\nreversed using recursion\n");
+    display(first);
     concatenate(first);
     //display(first);
+    mergingTwoLL(first);
     return 0;
 }
