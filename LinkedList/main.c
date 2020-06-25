@@ -3,7 +3,7 @@
 struct Node{
     int data;
     struct Node *next;
-}*first=NULL; //first is globally available as a pointer to access this now we have to use -> arrow
+}*first=NULL,*second=NULL; //first is globally available as a pointer to access this now we have to use -> arrow
 
 void create(int A[],int n){
     int i;
@@ -335,6 +335,36 @@ void RReverse(struct Node *q,struct Node *p){
 
 
 }
+void concatenate(struct Node *p){
+    int B[]={900,1000,2000};
+    struct Node *t,*last,*q=NULL;
+    int i,n=3;
+    second=(struct Node*)malloc(sizeof(struct Node));
+    second->data=B[0];
+    second->next=NULL;
+    last=second;
+    for(i=1;i<n;i++){
+        t=(struct Node*)malloc(sizeof(struct Node));
+        t->data=B[i];
+        t->next=NULL;
+        last->next=t;//here when it links with the new node
+        last=t;
+
+    }
+    //printf("\n");
+    //display(second);
+    while(p!=NULL){
+        q=p;
+        p=p->next;
+    }
+
+        q->next=second;
+
+
+    printf("\nconcatenated linked list\n");
+    display(first);
+
+}
 int main()
 {
     struct Node *q=NULL;
@@ -408,5 +438,7 @@ int main()
     RReverse(q,first);
     printf("\nreversed using recursion\n");
     display(first);
+    concatenate(first);
+    //display(first);
     return 0;
 }
