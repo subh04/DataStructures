@@ -417,7 +417,29 @@ void mergingTwoLL(struct Node *p){
     printf("\nMerging two sorted lists int sorted order\n");
     display(first);
 
+
 }
+void isLoop(struct Node *p){
+    struct Node *q=NULL;
+    p=q=first;
+    do{
+        p=p->next;
+        q=q->next;
+        if(q!=NULL){
+            q=q->next;
+        }else{
+            q=NULL;
+        }
+    }while(p!=NULL&&q!=NULL&&p!=q);
+        if(p==q){
+            printf("\nits a loop\n");
+        }
+        else
+            printf("\nnot a loop");
+
+    }
+
+
 int main()
 {
     struct Node *q=NULL;
@@ -497,5 +519,6 @@ int main()
     concatenate(first);
     //display(first);
     mergingTwoLL(first);
+    isLoop(first);
     return 0;
 }
