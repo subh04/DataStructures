@@ -67,6 +67,29 @@ void insert(struct Node *p,int pos,int data){
 
     }
 }
+void deleteElement(struct Node *p,int pos){
+    int i;
+    if(pos==1){
+        if(p==NULL){
+            printf("\nnothing to delete");
+            return;
+        }else{
+            first=first->next;
+            first->prev=NULL;
+            free(p);
+        }
+    }else{
+        for(i=0;i<pos-1;i++){
+            p=p->next;
+        }
+        p->prev->next=p->next;
+        if(p->next!=NULL){
+            p->next->prev=p->prev;
+        }
+        free(p);
+    }
+
+}
 int main()
 {
     int A[]={12,4,5,6,89,10};
@@ -76,7 +99,16 @@ int main()
     insert(first,0,999);
     printf("\n");
     display(first);
-    insert(first,7,1111);
+    insert(first,0,1111);
+    printf("\n");
+    display(first);
+    deleteElement(first,1);
+    printf("\n");
+    display(first);
+    deleteElement(first,3);
+    printf("\n");
+    display(first);
+    deleteElement(first,6);
     printf("\n");
     display(first);
 
