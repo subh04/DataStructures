@@ -90,6 +90,18 @@ void deleteElement(struct Node *p,int pos){
     }
 
 }
+void Reverse(struct Node *p){
+    struct Node *temp;
+    while(p!=NULL){
+        temp=p->next;
+        p->next=p->prev;
+        p->prev=temp;
+        p=p->prev;
+        if(p!=NULL&&p->next==NULL){
+            first=p;
+        }
+    }
+}
 int main()
 {
     int A[]={12,4,5,6,89,10};
@@ -109,6 +121,9 @@ int main()
     printf("\n");
     display(first);
     deleteElement(first,6);
+    printf("\n");
+    display(first);
+    Reverse(first);
     printf("\n");
     display(first);
 
