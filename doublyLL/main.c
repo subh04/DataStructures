@@ -37,12 +37,48 @@ void count(struct Node *p){
     }
     printf("\ncount is %d",c);
 }
+void insert(struct Node *p,int pos,int data){
+    struct Node *t;
+    int i;
+    if(pos==0){
+        t=(struct Node *)malloc(sizeof(struct Node));
+        t->data=data;
+        if(p==NULL){
+            t->next=NULL;
+            t->prev=NULL;
+        }else{
+            t->prev=first->prev;
+            first->prev=t;
+            t->next=first;
+            first=t;
+        }
+    }else{
+        t=(struct Node *)malloc(sizeof(struct Node));
+        t->data=data;
+        for(i=0;i<pos-1;i++){
+            p=p->next;
+        }
+        t->next=p->next;
+        t->prev=p;
+        p->next=t;
+        if(t->next!=NULL){
+            t->next->prev=t;
+        }
+
+    }
+}
 int main()
 {
     int A[]={12,4,5,6,89,10};
     create(A,6);
     display(first);
     count(first);
+    insert(first,0,999);
+    printf("\n");
+    display(first);
+    insert(first,7,1111);
+    printf("\n");
+    display(first);
 
     return 0;
 }
