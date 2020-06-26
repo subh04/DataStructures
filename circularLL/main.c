@@ -21,6 +21,9 @@ void create(int A[],int n){
     }
 }
 void display(struct Node *h){
+    if(h==NULL){
+        printf("Nothing to display");
+    }
     do{
         printf("%d ",h->data);
         h=h->next;
@@ -55,15 +58,47 @@ void insertElement(struct Node *h,int pos,int data){
         h->next=t;
     }
 }
+void deleteElements(struct Node *h,int pos){
+    struct Node *q;
+    int i;
+    if(pos==1){
+        if(h->next==Head){
+            free(Head);
+            Head=NULL;
+            printf("\nThere was only one element in the list and was deleted");
+        }else{
+            while(h->next!=Head)
+                h=h->next;
+
+            h->next=Head->next;
+            free(Head);
+            Head=h->next;
+        }
+
+    }else{
+        for(i=0;i<pos-2;i++){
+            h=h->next;
+        }
+        q=h->next;
+        h->next=q->next;
+        free(q);
+    }
+}
 int main()
 {
-    int A[]={2,3,4,5,6};
-    create(A,5);
+    int A[]={2,12,45,67,87,21};
+    create(A,6);
     display(Head);
     insertElement(Head,0,299);
     printf("\n");
     display(Head);
     insertElement(Head,3,599);
+    printf("\n");
+    display(Head);
+    deleteElements(Head,1);
+    printf("\n");
+    display(Head);
+    deleteElements(Head,3);
     printf("\n");
     display(Head);
     return 0;
