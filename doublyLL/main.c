@@ -29,11 +29,20 @@ void display(struct Node *p){
        p=p->next;
     }
 }
+void count(struct Node *p){
+    int c=0;
+    while(p!=NULL){
+        c=c+1;
+        p=p->next;
+    }
+    printf("\ncount is %d",c);
+}
 int main()
 {
     int A[]={12,4,5,6,89,10};
     create(A,6);
     display(first);
+    count(first);
 
     return 0;
 }
