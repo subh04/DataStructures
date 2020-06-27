@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 struct Node{
     int data;
     struct Node *next;
@@ -57,6 +58,20 @@ int countNodes(struct Node *p){
     }
     return c;
 }
+void midElement(struct Node *p){
+    int i;
+    int c=countNodes(first);
+
+    int mid;
+    mid=ceil(c/2);
+    printf("\nmid number %d",mid);
+    for(i=0;i<mid-1;i++){
+        p=p->next;
+    }
+
+    printf("\nthe mid is %d",p->data);
+}
+
 int recursiveCountNodes(struct Node *p){
     static int c=0;
     if(p!=NULL){
@@ -437,7 +452,19 @@ void isLoop(struct Node *p){
         else
             printf("\nnot a loop");
 
+}
+void findMid(struct Node *p){
+    struct Node *q=first;
+    while(q!=NULL){
+        q=q->next;
+        if(q!=NULL)
+            q=q->next;
+        if(q!=NULL)
+            p=p->next;
     }
+    printf("\nmid element is %d",p->data);
+}
+
 
 
 int main()
@@ -520,5 +547,7 @@ int main()
     //display(first);
     mergingTwoLL(first);
     isLoop(first);
+    midElement(first);
+    findMid(first);
     return 0;
 }
