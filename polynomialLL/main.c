@@ -24,14 +24,14 @@ void createRest(int c,int e){
 }
 void display(struct Node *p){
     while(p!=NULL){
-        printf("%dxX^%d+",p->coeff,p->exp);
+        printf("%d*X^%d+",p->coeff,p->exp);
         p=p->next;
     }
 }
 void calculatePolynomial(struct Node *p,int x){
     double sum=0.0;
     while(p!=NULL){
-        printf("%dx%d^%d+",p->coeff,x,p->exp);
+        printf("%d*%d^%d+",p->coeff,x,p->exp);
         p=p->next;
     }
     p=first;
@@ -39,7 +39,7 @@ void calculatePolynomial(struct Node *p,int x){
         sum=sum+p->coeff*pow(x,p->exp);
         p=p->next;
     }
-    printf("\ncalculated value is %f",sum);
+    printf("=%f ",sum);
 
 }
 int main()
