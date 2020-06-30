@@ -36,15 +36,50 @@ void display(){
 void isBalanced(char *exp){
     int i;
     for(i=0;exp[i]!='\0';i++){
-        if(exp[i]=='('){
+        if(exp[i]=='('||exp[i]=='{'||exp[i]=='['){
             push(exp[i]);
-           }else if(exp[i]==')'){
-                if(top==NULL){
-                   printf("\nthe given expression is not balanced\n");
-                   return;
-                   }
-                pop();
            }
+        else if(exp[i]==')'){
+            if(top==NULL){
+                printf("\nthe given expression is not balanced\n");
+                return;
+            }
+            else if(top->bracket=='('){
+                pop();
+                //return;
+                }
+            else{
+                    printf("\nthe brackets are not balanced");
+                    return;
+                }
+                }
+        else if(exp[i]==']'){
+            if(top==NULL){
+                printf("\nthe given expression is not balanced\n");
+                return;
+            }
+            else if(top->bracket=='['){
+                pop();
+                //return;
+                }
+            else{
+                printf("\nthe brackets are not balanced");
+                return;
+            }
+        }else if(exp[i]=='}'){
+            if(top==NULL){
+                printf("\nthe given expression is not balanced\n");
+                return;
+            }
+            else if(top->bracket=='{'){
+                pop();
+                //return;
+                }
+            else{
+                printf("\nthe brackets are not balanced");
+                return;
+            }
+        }
 
     }
     if(top==NULL){
@@ -55,7 +90,7 @@ void isBalanced(char *exp){
 }
 int main()
 {
-    char *exp="((a+b)*(c-d)))";
+    char *exp="{[(a+b)*(c-d)]}";
     isBalanced(exp);
 
 }
