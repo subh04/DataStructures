@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1593527622 source:c:\users\subha\desktop\datastructure\infixtopostfix\main.c
+1593527836 source:c:\users\subha\desktop\datastructure\infixtopostfix\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
