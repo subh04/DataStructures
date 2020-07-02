@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1593694399 source:c:\users\subha\desktop\datastructure\priorityqueue\main.c
+	<stdio.h>
+	<stdlib.h>
+
