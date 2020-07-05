@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 struct stack{
-    int *s;
+    struct Node  **s;
     int top;
     int size;
 };
-void push(struct stack *st,int x){
+void push(struct stack *st,struct Node * x){
     if(st->top==st->size-1){
         printf("stack overflow\n");
     }else{
@@ -19,13 +19,16 @@ void display(struct stack st){
         printf("%d ",st.s[i]);
     }
 }
-void pop(struct stack *st){
+struct Node * pop(struct stack *st){
+    struct Node * x =NULL;
     if(st->top==-1){
         printf("\nnothing to delete");
     }else{
+        x=st->s[st->top];
         st->top--;
     }
     printf("\n");
+    return x;
 }
 int peek(struct stack st,int index){
     if(st.top-index+1<0){
