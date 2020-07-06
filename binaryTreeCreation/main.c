@@ -1,5 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+struct stack{
+    struct Node  **s;
+    int top;
+    int size;
+};
 struct Node{
     struct Node *lchild;
     int data;
@@ -108,16 +113,154 @@ void postorder(struct Node *p){
 
     }
 }
+void push(struct stack *st,struct Node * x){
+    if(st->top==st->size-1){
+        printf("stack overflow\n");
+    }else{
+        st->top++;
+        st->s[st->top]=x;
+    }
+}
+void display(struct stack st){
+    int i;
+    for(i=st.top;i>=0;i--){
+        printf("%d ",st.s[i]);
+    }
+}
+struct Node * pop(struct stack *st){
+    struct Node * x =NULL;
+    if(st->top==-1){
+        printf("\nnothing to delete");
+    }else{
+        x=st->s[st->top];
+        st->top--;
+    }
+    //printf("\n");
+    return x;
+}
+int peek(struct stack st,int index){
+    if(st.top-index+1<0){
+        printf("\ninvalid index");
+        return 0;
+    }else{
+        return st.s[st.top-index+1];
+    }
+}
+void stackTop(struct stack st){
+    if(st.top==-1){
+        printf("\nstack has no elements yet");
+    }else{
+        printf("\nthe top element is %d",st.s[st.top]);
+    }
+}
+int isEmptyStack(struct stack st){
+    if(st.top==-1){
+        //printf("\nno elements in the stack yet");
+        return 1;
+    }else{
+       // printf("\nstack is not empty");
+        return 0;
+    }
+}
+void isFull(struct stack st){
+    if(st.top==st.size-1){
+        printf("\nstack is full");
+    }else{
+        printf("\nstack is not full");
+    }
+    printf("\n");
+}
+void Ipreorder(struct Node *p){
+    struct stack stk;
+    stk.size=20;
+    stk.s=(struct Node **)malloc(stk.size*sizeof(struct Node*));
+    stk.top=-1;
+    while(p!=NULL||!isEmptyStack(stk)){
+        if(p!=NULL){
+            printf("%d ",p->data);
+            push(&stk,p);
+            p=p->lchild;
+        }else{
+            p=pop(&stk);
+            p=p->rchild;
+        }
+    }
+}
+void Iinorder(struct Node *p){
+    struct stack stk;
+    stk.size=20;
+    stk.s=(struct Node **)malloc(stk.size*sizeof(struct Node*));
+    stk.top=-1;
+    while(p!=NULL||!isEmptyStack(stk)){
+        if(p!=NULL){
+            push(&stk,p);
+            p=p->lchild;
+        }else{
+            p=pop(&stk);
+            printf("%d ",p->data);
+            p=p->rchild;
+        }
+    }
+}
+void IPostnorder(struct Node *p){
+    struct stack stk;
+    long int temp;
+    stk.size=20;
+    stk.s=(struct Node **)malloc(stk.size*sizeof(struct Node*));
+    stk.top=-1;
+    while(p!=NULL||!isEmptyStack(stk)){
+        if(p!=NULL){
+            push(&stk,p);
+            p=p->lchild;
+        }else{
+            temp=pop(&stk);
+            if(temp>0){
+                push(&stk,-temp);
+                p=((struct Node *)temp)->rchild;
+            }else{
+                printf("%d ",((struct Node *)(-temp))->data);
+                p=NULL;
+            }
+        }
+    }
+}
+void levelOrderTraversal(struct Node *p){
+    struct Queue q;
+    createQueue(&q,20);
+    p=root;
+    printf("%d ",p->data);
+    enqueue(&q,p);
+    while(!isEmpty(q)){
+        p=dequeue(&q);
+        if(p->lchild!=NULL){
+            printf("%d ",p->lchild->data);
+            enqueue(&q,p->lchild);
+        }
+        if(p->rchild!=NULL){
+            printf("%d ",p->rchild->data);
+            enqueue(&q,p->rchild);
+        }
+    }
+}
 int main()
 {
-    createTree();
 
+    int pos;
+    createTree();
     printf("PREORDER TRAVERSAL\n");
     preorder(root);
     printf("\nINORDER TRAVERSAL\n");
     inorder(root);
     printf("\nPOSTORDER TRAVERSAL\n");
     postorder(root);
-    //sprintf("Hello world!\n");
+    printf("\nITERATIVE PREORDER TRAVERSAL\n");
+    Ipreorder(root);
+    printf("\nITERATIVE INORDER TRAVERSAL\n");
+    Iinorder(root);
+    printf("\nITERATIVE POSTORDER TRAVERSAL\n");
+    IPostnorder(root);
+    printf("\nLEVEL ORDER TRAVERSAL\n");
+    levelOrderTraversal(root);
+    //printf("\n%d",root->data);
     return 0;
 }
