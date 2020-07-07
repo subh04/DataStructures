@@ -76,6 +76,56 @@ struct Node * rInsert(struct Node * p,int key){
 
     return;
 };
+int height(struct Node * p){
+    int x,y;
+    if(p==NULL)
+        return 0;
+    x=height(p->lchild);
+    y=height(p->rchild);
+    if(x>y)
+        return x+1;
+    else
+        return y+1;
+}
+struct Node * InPre(struct Node * p){
+    while(p!=NULL&&p->rchild!=NULL)
+        p=p->rchild;
+    return p;
+}
+struct Node * InSucc(struct Node * p){
+    while(p!=NULL&&p->lchild!=NULL)
+        p=p->lchild;
+    return p;
+}
+struct Node * delete(struct Node *p,int key){
+    struct Node *q=NULL;
+    if(p==NULL)
+        return NULL;
+    if(p->lchild==NULL&&p->rchild==NULL){
+        if(p==root){
+            root=NULL;
+        }
+        free(p);
+        return NULL;
+
+    }
+    if(key<p->data)
+        p->lchild=delete(p->lchild,key);
+    else if(key>p->data)
+        p->rchild=delete(p->rchild,key);
+    else{
+        if(height(p->lchild)>height(p->rchild)){
+            q=InPre(p->lchild);
+            p->data=q->data;
+            p->lchild=delete(p->lchild,q->data);
+        }else{
+            q=InSucc(p->rchild);
+            p->data=q->data;
+            p->rchild=delete(p->rchild,q->data);
+        }
+    }
+    return p;
+}
 int main()
 {
     insert(30);
@@ -104,6 +154,9 @@ int main()
     rInsert(rootNew,43);
     inorder(rootNew);
     search(root,20);
+    delete(root,42);
+    printf("after deletion\n");
+    inorder(root);
     //Insert(rootNew,30);
     return 0;
 }
