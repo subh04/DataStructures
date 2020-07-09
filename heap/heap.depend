@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1594285477 source:c:\users\subha\desktop\datastructure\heap\main.c
+	<stdio.h>
+	<stdlib.h>
+
