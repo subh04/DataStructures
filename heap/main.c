@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 void delete(int A[],int n){
-    int x,i,j;
-    //x=A[n];
+    int x,i,j,temp;
+    temp=A[1];
     A[1]=A[n];
     i=1;
     j=2*i;
@@ -20,6 +20,7 @@ void delete(int A[],int n){
             break;
         }
     }
+    A[n]=temp;
 }
 void insert(int A[],int n){
     int i=n,temp;
@@ -44,14 +45,19 @@ void create(){
         insert(A,i);
 
     }
-    print(A,7);
-    delete(A,7);
-    print(A,6);
+    print(A);
+    //Heap sort
+    for(i=7;i>1;i--)
+        delete(A,i);
+
+
+    print(A);
 
 }
-void print(int A[],int n){
+void print(int A[]){
 int i;
-for(i=1;i<=n;i++){
+for(i=1;i<=7;i++){
+
         printf("%d ",A[i]);
     }
     printf("\n");
