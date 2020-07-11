@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+struct Node{
+    int data;
+    struct Node *next;
+}*first=NULL,*last=NULL;
 void swap(int *a,int *b){
     int temp;
     if(a>b){
@@ -24,16 +28,84 @@ void BubbleSort(int A[],int n){
 
 
 }
+void insertionSort(struct Node *A[],int n,int x){
+    struct Node *t,*p;
+    int i;
+    BubbleSort(A,n);
+    display(A,n);
+    //
+    first=(struct Node *)malloc(sizeof(struct Node));
+    first->data=A[0];
+    first->next=NULL;
+    p=last=first;
+    //printf("%d",last->data);
+    for(i=1;i<n;i++){
+        t=(struct Node *)malloc(sizeof(struct Node));
+        t->data=A[i];
+        t->next=NULL;
+        p->next=t;
+        p=p->next;
+        last=t;
+
+    }
+    displayLL(first);
+    struct Node *q=NULL;
+    p=first;
+    while(p!=NULL){
+        if(p->data>x){
+            q=p;
+            p=p->next;
+            //q->data=x;
+            //q->next=p;
+
+        }else if(p->data<=x){
+            t=(struct Node *)malloc(sizeof(struct Node));
+            t->data=x;
+            t->next=p;
+
+
+            if(q==NULL){
+                //t->next=p;
+                first=t;
+
+            }else{
+                q->next=t;
+            }
+            break;
+
+
+        }
+    }
+    if(p==NULL){
+        t=(struct Node *)malloc(sizeof(struct Node));
+        t->data=x;
+        t->next=NULL;
+        q->next=t;
+        last=t;
+    }
+    displayLL(first);
+
+
+}
+void displayLL(struct Node *p){
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p=p->next;
+    }
+    printf("\n");
+}
 void display(int A[],int n){
     int i;
     for(i=0;i<n;i++){
         printf("%d ",A[i]);
     }
+    printf("\n");
 }
 int main()
 {
-    int A[]={24,45,12,32,56,76,89,10,79,84},n=10;
-    BubbleSort(A,n);
-    display(A,n);
+    int A[]={24,45,12,33},n=4;
+    insertionSort(A,n,100);
+    insertionSort(A,n,2);
+    //display(A,n);
     return 0;
 }
