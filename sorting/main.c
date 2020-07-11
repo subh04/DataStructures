@@ -25,7 +25,8 @@ void BubbleSort(int A[],int n){
         if(flag==0)
             break;
     }
-
+    printf("\nBubble Sort");
+    display(A,n);
 
 }
 void insertionSort(struct Node *A[],int n,int x){
@@ -87,6 +88,20 @@ void insertionSort(struct Node *A[],int n,int x){
 
 
 }
+void correctInsertionSort(int A[],int n){
+    int i,x,j;
+    for(i=1;i<n;i++){
+        j=i-1;
+        x=A[i];
+        while(j>-1&&A[j]<x){
+            A[j+1]=A[j];
+            j--;
+        }
+        A[j+1]=x;
+    }
+    printf("\nInsertion sort");
+    display(A,n);
+}
 void displayLL(struct Node *p){
     while(p!=NULL){
         printf("%d ",p->data);
@@ -97,15 +112,18 @@ void displayLL(struct Node *p){
 void display(int A[],int n){
     int i;
     for(i=0;i<n;i++){
-        printf("%d ",A[i]);
+        printf(" %d ",A[i]);
     }
     printf("\n");
 }
 int main()
 {
     int A[]={24,45,12,33},n=4;
-    insertionSort(A,n,100);
-    insertionSort(A,n,2);
-    //display(A,n);
+    BubbleSort(A,n);
+    correctInsertionSort(A,n);
+
+    //insertionSort(A,n,100);
+    //insertionSort(A,n,2);
+    //
     return 0;
 }
