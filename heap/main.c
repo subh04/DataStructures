@@ -20,7 +20,7 @@ void delete(int A[],int n){
             break;
         }
     }
-    A[n]=temp;
+    A[n]=temp;//ADDING DELETED ELEMENT IN THE LAST PLACE
 }
 void insert(int A[],int n){
     int i=n,temp;
