@@ -109,6 +109,18 @@ void displayLL(struct Node *p){
     }
     printf("\n");
 }
+void selectionSort(int A[],int n){
+    int i,j,k;
+    for(i=0;i<n-1;i++){
+        for(j=k=i;j<n;j++){
+            if(A[j]>A[k])
+                k=j;
+        }
+        swap(&A[k],&A[i]);
+    }
+    printf("\nSelection Sort");
+    display(A,n);
+}
 void display(int A[],int n){
     int i;
     for(i=0;i<n;i++){
@@ -121,6 +133,7 @@ int main()
     int A[]={24,45,12,33},n=4;
     BubbleSort(A,n);
     correctInsertionSort(A,n);
+    selectionSort(A,n);
 
     //insertionSort(A,n,100);
     //insertionSort(A,n,2);
