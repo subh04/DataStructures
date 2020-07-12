@@ -146,6 +146,47 @@ void quickSort(int A[],int l,int h){
     }
 
 }
+void singleListMerge(int A[],int l,int mid,int h){
+    int *B=(int *)malloc((h+1)*sizeof(int));
+    int i=l,j=mid+1,k=l;
+    while(i<=mid&&j<=h){
+        if(A[i]>A[j]){
+            B[k]=A[i];
+            k++;
+            i++;
+        }else{
+            B[k]=A[j];
+            k++;
+            j++;
+        }
+    }
+    for(;i<=mid;i++){
+        B[k]=A[i];
+        k++;
+    }
+    for(;j<=h;j++){
+        B[k]=A[j];
+        k++;
+    }
+    for(i=l;i<=h;i++){
+        A[i]=B[i];
+    }
+}
+void IMergeSort(int A[],int n){
+    int p,i,l,mid,h;
+    for(p=2;p<=n;p=p*2){
+        for(i=0;i+p-1<n;i=i+p){
+            l=i;
+            h=i+p-1;
+            mid=(l+h)/2;
+            singleListMerge(A,l,mid,h);
+        }
+    }
+    if(p/2<n)
+        singleListMerge(A,0,p/2-1,n-1);
+    printf("\nIterative Merge sort");
+    display(A,n);
+}
 void display(int A[],int n){
     int i;
     for(i=0;i<n;i++){
@@ -155,13 +196,16 @@ void display(int A[],int n){
 }
 int main()
 {
-    int A[]={1,9,3,14,2,45},n=6;
+    int A[]={1,3,2,5,-3},n=5;
+
     BubbleSort(A,n);
     correctInsertionSort(A,n);
     selectionSort(A,n);
     quickSort(A,0,n-1);
     printf("\nQuick Sort");
     display(A,n);
+
+    IMergeSort(A,n);
 
     //insertionSort(A,n,100);
     //insertionSort(A,n,2);
