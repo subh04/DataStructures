@@ -6,12 +6,13 @@ struct Node{
 }*first=NULL,*last=NULL;
 void swap(int *a,int *b){
     int temp;
-    if(a>b){
-        temp=*b;
-        *b=*a;
-        *a=temp;
-    }
+
+        temp=*a;
+        *a=*b;
+        *b=temp;
+
 }
+
 void BubbleSort(int A[],int n){
     int i,j,flag;
     for(i=0;i<n-1;i++){
@@ -122,37 +123,39 @@ void selectionSort(int A[],int n){
     display(A,n);
 }
 int partition(int A[],int l,int h){
-    int i=l,j=h,pivot=A[l];
+    int i=l,j=h+1,pivot=A[l];
     do{
-        do{i++;}while(A[i]<=pivot);
-        do{j--;}while(A[j]>pivot);
+        do{i++;}while(A[i]>=pivot&&i<h);
+        do{j--;}while(A[j]<pivot&&j>l);
         if(i<j)
             swap(&A[i],&A[j]);
 
+
     }while(i<j);
     swap(&A[l],&A[j]);
+
     return j;
 
 }
 void quickSort(int A[],int l,int h){
-    int j;
+    int x;
     if(l<h){
-        j=partition(A,l,h);
-        quickSort(A,l,j);
-        quickSort(A,j+1,h);
+        x=partition(A,l,h);
+        quickSort(A,l,x);
+        quickSort(A,x+1,h);
     }
 
 }
 void display(int A[],int n){
     int i;
-    for(i=1;i<n;i++){
+    for(i=0;i<n;i++){
         printf(" %d ",A[i]);
     }
     printf("\n");
 }
 int main()
 {
-    int A[]={24,45,12,33,65535},n=5;
+    int A[]={1,9,3,14,2,45},n=6;
     BubbleSort(A,n);
     correctInsertionSort(A,n);
     selectionSort(A,n);
