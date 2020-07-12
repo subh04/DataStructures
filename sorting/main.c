@@ -121,19 +121,44 @@ void selectionSort(int A[],int n){
     printf("\nSelection Sort");
     display(A,n);
 }
+int partition(int A[],int l,int h){
+    int i=l,j=h,pivot=A[l];
+    do{
+        do{i++;}while(A[i]<=pivot);
+        do{j--;}while(A[j]>pivot);
+        if(i<j)
+            swap(&A[i],&A[j]);
+
+    }while(i<j);
+    swap(&A[l],&A[j]);
+    return j;
+
+}
+void quickSort(int A[],int l,int h){
+    int j;
+    if(l<h){
+        j=partition(A,l,h);
+        quickSort(A,l,j);
+        quickSort(A,j+1,h);
+    }
+
+}
 void display(int A[],int n){
     int i;
-    for(i=0;i<n;i++){
+    for(i=1;i<n;i++){
         printf(" %d ",A[i]);
     }
     printf("\n");
 }
 int main()
 {
-    int A[]={24,45,12,33},n=4;
+    int A[]={24,45,12,33,65535},n=5;
     BubbleSort(A,n);
     correctInsertionSort(A,n);
     selectionSort(A,n);
+    quickSort(A,0,n-1);
+    printf("\nQuick Sort");
+    display(A,n);
 
     //insertionSort(A,n,100);
     //insertionSort(A,n,2);
