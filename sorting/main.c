@@ -187,6 +187,31 @@ void IMergeSort(int A[],int n){
     printf("\nIterative Merge sort");
     display(A,n);
 }
+void shellSort(int A[],int n){
+    int gap,i,j,temp,flag=0,x,y;
+    for(gap=(n-1)/2;gap>=1;gap=gap/2){
+        for(i=gap;i<n;i++){
+            x=i;
+            temp=A[i];
+            j=i-gap;
+            while(j>=0&&A[j]<temp){
+
+
+                //flag=0;
+                A[x]=A[j];
+                x=x-gap;
+                j=j-gap;
+
+
+
+
+            }
+            A[j+gap]=temp;
+
+        }
+    }
+
+}
 void display(int A[],int n){
     int i;
     for(i=0;i<n;i++){
@@ -196,7 +221,7 @@ void display(int A[],int n){
 }
 int main()
 {
-    int A[]={1,3,2,5,-3},n=5;
+    int A[]={8,7,6,5,4,3,2,1},n=8;
 
     BubbleSort(A,n);
     correctInsertionSort(A,n);
@@ -207,8 +232,9 @@ int main()
 
     IMergeSort(A,n);
 
-    //insertionSort(A,n,100);
-    //insertionSort(A,n,2);
-    //
+    shellSort(A,n);
+    printf("\nShell Sort");
+    display(A,n);
+
     return 0;
 }
